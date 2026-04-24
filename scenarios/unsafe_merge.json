@@ -1,0 +1,29 @@
+{
+  "name": "unsafe_merge",
+  "dt_sec": 30,
+  "horizon_steps": 18,
+  "min_separation_nm": 3.0,
+  "recovery_min_separation_nm": 3.0,
+  "proposal_aircraft_id": "AC1",
+  "proposed_action": "TURN_RIGHT_30",
+  "alternative_actions": [
+    "MAINTAIN",
+    "TURN_LEFT_30"
+  ],
+  "aircraft": [
+    {
+      "id": "AC1",
+      "x_nm": 0.0,
+      "y_nm": 0.0,
+      "heading_deg": 0.0,
+      "speed_kts": 240.0
+    },
+    {
+      "id": "AC2",
+      "x_nm": 8.0,
+      "y_nm": -6.0,
+      "heading_deg": 90.0,
+      "speed_kts": 240.0
+    }
+  ]
+}

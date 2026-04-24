@@ -1,0 +1,29 @@
+{
+  "name": "safe_hold",
+  "dt_sec": 30,
+  "horizon_steps": 16,
+  "min_separation_nm": 3.0,
+  "recovery_min_separation_nm": 3.0,
+  "proposal_aircraft_id": "AC1",
+  "proposed_action": "MAINTAIN",
+  "alternative_actions": [
+    "TURN_LEFT_15",
+    "TURN_RIGHT_15"
+  ],
+  "aircraft": [
+    {
+      "id": "AC1",
+      "x_nm": 0.0,
+      "y_nm": 0.0,
+      "heading_deg": 0.0,
+      "speed_kts": 220.0
+    },
+    {
+      "id": "AC2",
+      "x_nm": 12.0,
+      "y_nm": 8.0,
+      "heading_deg": 180.0,
+      "speed_kts": 220.0
+    }
+  ]
+}
