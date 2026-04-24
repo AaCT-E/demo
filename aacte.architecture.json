@@ -1,11 +1,12 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "repo_name": "AaCT-E/demo",
   "repo_role": "procurement_demo",
+  "version": "0.2.0",
   "description": "Minimal runnable prototype translating GCAT/BCAT admissibility into commit-time safety enforcement for FAA/TSSC and SBIR evaluation.",
   "org": "AaCT-E",
   "ecosystem": "GCAT-BCAT",
-  "lifecycle_stage": "alpha",
+  "lifecycle_stage": "beta",
   "primary_audience": [
     "FAA_TSSC_reviewers",
     "SBIR_evaluators",
@@ -14,8 +15,11 @@
   "entry_points": {
     "run": "python run_demo.py",
     "verify": "python verify_demo.py",
+    "access_cli": "python -m access.cli",
+    "access_web": "python -m access.web --port 8080",
     "install": "pip install -e .",
-    "ci": ".github/workflows/verify.yml"
+    "ci": ".github/workflows/verify.yml",
+    "release": ".github/workflows/release.yml"
   },
   "dependencies": {
     "external": [],
@@ -42,17 +46,25 @@
     "ci_required": true,
     "verification_required": true,
     "zero_dependency_policy": true,
-    "python_minimum": "3.10"
+    "python_minimum": "3.10",
+    "frozen_components": [
+      "aacte/*.py",
+      "scenarios/*.json",
+      "DEMO_SPEC.md"
+    ]
   },
   "artifacts": {
     "scenarios": "scenarios/*.json",
     "traces": "outputs/*_trace.json",
     "spec": "DEMO_SPEC.md",
+    "access": "docs/ACCESS.md",
+    "sdk_contract": "docs/SDK_INTEGRATION.md",
+    "submission": "docs/SUBMISSION.md",
     "docs": "docs/"
   },
   "monitoring": {
     "stegdb_hook": "stegdb_hooks/emit_status.py",
     "ci_schedule": "daily_at_0600_utc",
-    "trace_retention": "artifact_upload"
+    "trace_retention": "release_archive"
   }
 }

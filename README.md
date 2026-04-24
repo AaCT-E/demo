@@ -1,12 +1,13 @@
 # AaCT-E — Admissibility at Commit-Time Engine
 
 [![CI](https://github.com/AaCT-E/demo/actions/workflows/verify.yml/badge.svg)](https://github.com/AaCT-E/demo/actions/workflows/verify.yml)
+[![Version](https://img.shields.io/badge/version-0.2.0-blue)](https://github.com/AaCT-E/demo/releases)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen)]()
 
 > **Minimal, runnable prototype of commit-time safety enforcement for AI-assisted aviation decisions.**
-> 
+>
 > This repo is a Phase-I-style evidence artifact: one narrow claim, executable in seconds, verifiable by assertion.
 
 ---
@@ -25,10 +26,24 @@ At the exact moment an action would become operationally real, the system evalua
 
 ---
 
+## How to Access
+
+Three paths, one purpose, zero dependencies:
+
+| Path | Audience | Command |
+|------|----------|---------|
+| **Direct clone** | Reviewers | `git clone` → `python verify_demo.py` |
+| **Via SDK** | Developers | `stegverse demo --repo AaCT-E/demo --tag v0.2.0` |
+| **HTTP endpoint** | Systems | `python -m access.web --port 8080` |
+
+See [docs/ACCESS.md](docs/ACCESS.md) for full details.
+
+---
+
 ## Zero-Dependency Run
 
 ```bash
-git clone https://github.com/AaCT-E/demo.git
+git clone --branch v0.2.0 https://github.com/AaCT-E/demo.git
 cd demo
 python run_demo.py
 python verify_demo.py
@@ -44,13 +59,21 @@ python verify_demo.py
 |------|---------|
 | `run_demo.py` | Execute all scenarios, emit JSON traces |
 | `verify_demo.py` | Assertion-based pass/fail verification |
-| `aacte/` | Core engine (models, geometry, simulator, commit-time gate) |
-| `scenarios/` | Scenario inputs (`unsafe_merge`, `safe_hold`) |
+| `aacte/` | Core engine (frozen since v0.1.0) |
+| `scenarios/` | Scenario inputs (frozen since v0.1.0) |
+| `access/` | Single-purpose entry points (cli, web) |
 | `outputs/` | Generated traces after execution |
-| `DEMO_SPEC.md` | Exact specification (state model, dynamics, gate rules, criteria) |
+| `DEMO_SPEC.md` | Exact specification (frozen) |
 | `aacte.architecture.json` | Ecosystem architecture manifest |
 | `stegdb_hooks/` | StegDB monitoring integration |
-| `.github/workflows/verify.yml` | CI verification across Python 3.10–3.13 |
+| `.github/workflows/verify.yml` | CI verification |
+| `.github/workflows/release.yml` | Tag-triggered release packaging |
+| `docs/ACCESS.md` | How to access the demo |
+| `docs/SDK_INTEGRATION.md` | SDK wrapping contract |
+| `docs/SUBMISSION.md` | FAA/TSSC/SBIR packaging guide |
+| `docs/ECOSYSTEM.md` | Ecosystem guide |
+| `docs/PROCUREMENT.md` | Procurement translation |
+| `CHANGELOG.md` | Version history |
 
 ---
 
@@ -114,7 +137,7 @@ The demo is complete when:
 @software{aacte_demo,
   title = {AaCT-E: Admissibility at Commit-Time Engine},
   url = {https://github.com/AaCT-E/demo},
-  version = {0.1.0},
+  version = {0.2.0},
   year = {2026}
 }
 ```
