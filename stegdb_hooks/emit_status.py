@@ -1,19 +1,9 @@
 #!/usr/bin/env python3
 """
-StegDB Monitoring Hook — CI Status Emitter
+StegDB Monitoring Hook — CI Status Emitter v2.0.0
 
-Emits a structured status report that StegDB (or any downstream monitor)
-can ingest to track repo health, trace validity, and ecosystem integration.
-
-Usage (from CI):
-    python stegdb_hooks/emit_status.py \
-        --repo AaCT-E/demo \
-        --run-id $GITHUB_RUN_ID \
-        --sha $GITHUB_SHA \
-        --status success \
-        --traces-dir outputs/
-
-Output: stegdb_hooks/last_status.json
+Emits a structured status report for ecosystem monitoring.
+Usage: python stegdb_hooks/emit_status.py [args]
 """
 
 import argparse
@@ -24,17 +14,17 @@ from datetime import datetime, timezone
 
 
 def hash_file(path: Path) -> str:
-    """SHA-256 of file contents."""
     return hashlib.sha256(path.read_bytes()).hexdigest()[:16]
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Emit StegDB-compatible status report")
+    parser = argparse.ArgumentParser()
     parser.add_argument("--repo", required=True)
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--sha", required=True)
-    parser.add_argument("--status", required=True, choices=["success", "failure", "cancelled"])
+    parser.add_argument("--status", required=True)
     parser.add_argument("--traces-dir", type=Path, default=Path("outputs"))
+    parser.add_argument("--tag", default="unknown")
     args = parser.parse_args()
 
     traces_dir = args.traces_dir
@@ -53,8 +43,9 @@ def main() -> None:
         })
 
     report = {
-        "schema_version": "1.0.0",
+        "schema_version": "2.0.0",
         "repo": args.repo,
+        "version": args.tag,
         "run_id": args.run_id,
         "commit_sha": args.sha,
         "status": args.status,
