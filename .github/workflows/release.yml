@@ -1,0 +1,52 @@
+name: AaCT-E Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify and generate traces
+        run: |
+          python run_demo.py
+          python verify_demo.py
+
+      - name: Generate status artifact
+        run: |
+          python -m access.cli --json > aacte-status.json
+
+      - name: Create release archives
+        run: |
+          mkdir release
+          # Full repo snapshot
+          git archive --format=zip --prefix=aacte-demo-${{ github.ref_name }}/ HEAD > release/aacte-demo-${{ github.ref_name }}.zip
+          # Trace artifacts
+          cd outputs && zip -r ../release/traces-${{ github.ref_name }}.zip *.json && cd ..
+          # Checksums
+          cd release && sha256sum * > SHA256SUMS && cd ..
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            release/aacte-demo-*.zip
+            release/traces-*.zip
+            release/SHA256SUMS
+            aacte-status.json
+          generate_release_notes: true
+
+      - name: Notify Publisher
+        if: always()
+        run: |
+          python stegdb_hooks/emit_status.py             --repo "AaCT-E/demo"             --run-id "${{ github.run_id }}"             --sha "${{ github.sha }}"             --status "${{ job.status }}"             --traces-dir outputs/             --tag "${{ github.ref_name }}"
