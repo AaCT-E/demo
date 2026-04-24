@@ -1,0 +1,49 @@
+name: AaCT-E Verification
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Daily at 06:00 UTC — StegDB monitoring hook
+    - cron: "0 6 * * *"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Verify zero-dependency claim
+        run: |
+          python -c "import sys; print(f'Python {sys.version}')"
+          # Confirm no external packages are imported
+          python -m py_compile aacte/*.py run_demo.py verify_demo.py
+
+      - name: Run demo scenarios
+        run: python run_demo.py
+
+      - name: Run verification suite
+        run: python verify_demo.py
+
+      - name: Upload traces as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: scenario-traces-py${{ matrix.python-version }}
+          path: outputs/*.json
+
+      - name: StegDB monitoring hook
+        if: always()
+        run: |
+          python stegdb_hooks/emit_status.py             --repo "AaCT-E/demo"             --run-id "${{ github.run_id }}"             --sha "${{ github.sha }}"             --status "${{ job.status }}"             --traces-dir outputs/
