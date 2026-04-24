@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software and the underlying theory papers."
+title: "AaCT-E: Admissibility at Commit-Time Engine"
+version: 0.1.0
+date-released: 2026-04-22
+url: "https://github.com/AaCT-E/demo"
+repository-code: "https://github.com/AaCT-E/demo"
+license: Apache-2.0
+type: software
+authors:
+  - family-names: "AaCT-E"
+    given-names: "Contributors"
+keywords:
+  - aviation safety
+  - commit-time enforcement
+  - GCAT
+  - BCAT
+  - admissibility
+  - simulation
+references:
+  - type: software
+    title: "GCAT-BCAT Engine"
+    url: "https://github.com/GCAT-BCAT-Engine"
+  - type: software
+    title: "StegVerse Ecosystem"
+    url: "https://github.com/StegVerse-Labs"

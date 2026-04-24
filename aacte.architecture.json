@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "repo_name": "AaCT-E/demo",
+  "repo_role": "procurement_demo",
+  "description": "Minimal runnable prototype translating GCAT/BCAT admissibility into commit-time safety enforcement for FAA/TSSC and SBIR evaluation.",
+  "org": "AaCT-E",
+  "ecosystem": "GCAT-BCAT",
+  "lifecycle_stage": "alpha",
+  "primary_audience": [
+    "FAA_TSSC_reviewers",
+    "SBIR_evaluators",
+    "procurement_officers"
+  ],
+  "entry_points": {
+    "run": "python run_demo.py",
+    "verify": "python verify_demo.py",
+    "install": "pip install -e .",
+    "ci": ".github/workflows/verify.yml"
+  },
+  "dependencies": {
+    "external": [],
+    "internal": [
+      {
+        "repo": "GCAT-BCAT-Engine/Publisher",
+        "relationship": "theory_upstream",
+        "purpose": "Academic paper publishing and formal proof artifacts"
+      },
+      {
+        "repo": "StegVerse-Labs/StegDB",
+        "relationship": "monitoring_downstream",
+        "purpose": "Entity sandbox runner and ecosystem health monitoring"
+      },
+      {
+        "repo": "StegVerse-Labs/SDK",
+        "relationship": "user_facing",
+        "purpose": "User-facing validation tools and integration SDK"
+      }
+    ]
+  },
+  "governance": {
+    "license": "Apache-2.0",
+    "ci_required": true,
+    "verification_required": true,
+    "zero_dependency_policy": true,
+    "python_minimum": "3.10"
+  },
+  "artifacts": {
+    "scenarios": "scenarios/*.json",
+    "traces": "outputs/*_trace.json",
+    "spec": "DEMO_SPEC.md",
+    "docs": "docs/"
+  },
+  "monitoring": {
+    "stegdb_hook": "stegdb_hooks/emit_status.py",
+    "ci_schedule": "daily_at_0600_utc",
+    "trace_retention": "artifact_upload"
+  }
+}
