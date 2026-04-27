@@ -1,0 +1,366 @@
+{
+  "scenario": "safe_hold",
+  "dt_sec": 30,
+  "horizon_steps": 16,
+  "decision": "ALLOW",
+  "proposal_aircraft_id": "AC1",
+  "proposed_action": "MAINTAIN",
+  "proposal_min_separation_nm": 8.062258,
+  "threshold_min_separation_nm": 3.0,
+  "recovery_min_separation_nm": 3.0,
+  "recovery_reachable": true,
+  "alternatives": [
+    {
+      "action": "TURN_LEFT_15",
+      "projected_min_separation_nm": 9.49802,
+      "recovery_reachable": true
+    },
+    {
+      "action": "TURN_RIGHT_15",
+      "projected_min_separation_nm": 6.56317,
+      "recovery_reachable": true
+    }
+  ],
+  "timeline": [
+    {
+      "step": 0,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 0.0,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": 12.0,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 14.422205101855956
+    },
+    {
+      "step": 1,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 1.8333333333333333,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": 10.166666666666666,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 11.55181563410897
+    },
+    {
+      "step": 2,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 3.6666666666666665,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": 8.333333333333332,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 9.26162932629987
+    },
+    {
+      "step": 3,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 5.5,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": 6.499999999999999,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 8.06225774829855
+    },
+    {
+      "step": 4,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 7.333333333333333,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": 4.666666666666666,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 8.432740427115679
+    },
+    {
+      "step": 5,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 9.166666666666666,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": 2.833333333333333,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 10.203485243342644
+    },
+    {
+      "step": 6,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 11.0,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": 0.9999999999999998,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 12.806248474865697
+    },
+    {
+      "step": 7,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 12.833333333333334,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": -0.8333333333333335,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 15.835964693626272
+    },
+    {
+      "step": 8,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 14.666666666666668,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": -2.666666666666667,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 19.090428084368472
+    },
+    {
+      "step": 9,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 16.5,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": -4.5,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 22.47220505424423
+    },
+    {
+      "step": 10,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 18.333333333333332,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": -6.333333333333333,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 25.93153378503563
+    },
+    {
+      "step": 11,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 20.166666666666664,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": -8.166666666666666,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 29.44108995566872
+    },
+    {
+      "step": 12,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 21.999999999999996,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": -10.0,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 32.98484500494128
+    },
+    {
+      "step": 13,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 23.83333333333333,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": -11.833333333333334,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 36.55285366576884
+    },
+    {
+      "step": 14,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 25.66666666666666,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": -13.666666666666668,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 40.13864859597432
+    },
+    {
+      "step": 15,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 27.499999999999993,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": -15.500000000000002,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 43.73785545725807
+    },
+    {
+      "step": 16,
+      "aircraft": [
+        {
+          "id": "AC1",
+          "x_nm": 29.333333333333325,
+          "y_nm": 0.0,
+          "heading_deg": 0.0,
+          "speed_kts": 220.0
+        },
+        {
+          "id": "AC2",
+          "x_nm": -17.333333333333336,
+          "y_nm": 8.0,
+          "heading_deg": 180.0,
+          "speed_kts": 220.0
+        }
+      ],
+      "min_pairwise_separation_nm": 47.34741574550587
+    }
+  ]
+}
