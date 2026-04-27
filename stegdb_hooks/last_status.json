@@ -1,0 +1,36 @@
+{
+  "schema_version": "2.0.0",
+  "repo": "AaCT-E/demo",
+  "version": "v0.2.0",
+  "run_id": "test-123",
+  "commit_sha": "abc123def456",
+  "status": "success",
+  "timestamp_utc": "2026-04-26T19:28:36.255535+00:00",
+  "traces": [
+    {
+      "scenario": "safe_hold",
+      "decision": "ALLOW",
+      "proposal_min_separation_nm": 8.062258,
+      "recovery_reachable": true,
+      "file": "safe_hold_trace.json",
+      "sha256_prefix": "237452f70d1a6092"
+    },
+    {
+      "scenario": "unsafe_merge",
+      "decision": "DENY",
+      "proposal_min_separation_nm": 1.198305,
+      "recovery_reachable": true,
+      "file": "unsafe_merge_trace.json",
+      "sha256_prefix": "0c9f3d8479b25f20"
+    }
+  ],
+  "ecosystem": {
+    "org": "AaCT-E",
+    "upstream": "GCAT-BCAT-Engine",
+    "sibling_repos": [
+      "GCAT-BCAT-Engine/Publisher",
+      "StegVerse-Labs/StegDB",
+      "StegVerse-Labs/SDK"
+    ]
+  }
+}
