@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite both the software and the underlying theory papers."
 title: "AaCT-E: Admissibility at Commit-Time Engine"
-version: 0.1.0
-date-released: 2026-04-22
+version: 0.2.0
+date-released: 2026-06-12
 url: "https://github.com/AaCT-E/demo"
 repository-code: "https://github.com/AaCT-E/demo"
 license: Apache-2.0
