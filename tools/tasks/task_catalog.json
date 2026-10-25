@@ -69,7 +69,7 @@
    }
   },
   {
-   "id": "verify.verify",
+   "id": "verify.verify-python3.10",
    "source": {
     "workflow": ".github/workflows/verify.yml",
     "workflow_name": "AaCT-E Verification",
@@ -81,7 +81,10 @@
      "pull_request",
      "schedule"
     ],
-    "permissions_before": null
+    "permissions_before": null,
+    "matrix_cell": {
+     "python-version": "3.10"
+    }
    },
    "events": [
     "pull_request",
@@ -91,29 +94,29 @@
    "steps": [
     {
      "name": "Verify zero-dependency claim",
-     "run_file": "tools/tasks/steps/verify.verify/01-verify-zero-dependency-claim.sh",
+     "run_file": "tools/tasks/steps/verify.verify-python3.10/01-verify-zero-dependency-claim.sh",
      "run_sha256": "6a8f393ba987c03da5b6ca34ca09291f558c33ed388b64b6fcccbc2a33a47c73"
     },
     {
      "name": "Run demo scenarios",
-     "run_file": "tools/tasks/steps/verify.verify/02-run-demo-scenarios.sh",
+     "run_file": "tools/tasks/steps/verify.verify-python3.10/02-run-demo-scenarios.sh",
      "run_sha256": "950274717767167f31cc880a74455bba0b74fa4f91b162caa5d6fb3738f369b9"
     },
     {
      "name": "Run verification suite",
-     "run_file": "tools/tasks/steps/verify.verify/03-run-verification-suite.sh",
+     "run_file": "tools/tasks/steps/verify.verify-python3.10/03-run-verification-suite.sh",
      "run_sha256": "d3da28301a55d88460479b3889092ad54a3ffd82d59d5ad645ad0aec5ff37176"
     },
     {
      "name": "StegDB monitoring hook",
-     "run_file": "tools/tasks/steps/verify.verify/04-stegdb-monitoring-hook.sh",
+     "run_file": "tools/tasks/steps/verify.verify-python3.10/04-stegdb-monitoring-hook.sh",
      "run_sha256": "1b21c0f62d060c57c053f92d51fea4d5ad4703e574838bb25c2859b0c495ba9c",
      "if": "always()"
     }
    ],
    "artifacts": [
     {
-     "name": "scenario-traces-py${{ matrix.python-version }}",
+     "name": "scenario-traces-py3.10",
      "path": "outputs/*.json",
      "if_no_files_found": "warn",
      "if": "success()"
@@ -123,8 +126,197 @@
     "fetch_depth": "1",
     "persist_credentials": "true",
     "timeout_minutes": 30,
-    "python_version": "${{ matrix.python-version }}",
-    "artifact_name": "scenario-traces-py",
+    "python_version": "3.10",
+    "artifact_name": "scenario-traces-py3.10",
+    "artifact_if_no_files_found": "warn"
+   }
+  },
+  {
+   "id": "verify.verify-python3.11",
+   "source": {
+    "workflow": ".github/workflows/verify.yml",
+    "workflow_name": "AaCT-E Verification",
+    "job": "verify",
+    "job_name": null,
+    "commit": "56b798e",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "schedule"
+    ],
+    "permissions_before": null,
+    "matrix_cell": {
+     "python-version": "3.11"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Verify zero-dependency claim",
+     "run_file": "tools/tasks/steps/verify.verify-python3.11/01-verify-zero-dependency-claim.sh",
+     "run_sha256": "6a8f393ba987c03da5b6ca34ca09291f558c33ed388b64b6fcccbc2a33a47c73"
+    },
+    {
+     "name": "Run demo scenarios",
+     "run_file": "tools/tasks/steps/verify.verify-python3.11/02-run-demo-scenarios.sh",
+     "run_sha256": "950274717767167f31cc880a74455bba0b74fa4f91b162caa5d6fb3738f369b9"
+    },
+    {
+     "name": "Run verification suite",
+     "run_file": "tools/tasks/steps/verify.verify-python3.11/03-run-verification-suite.sh",
+     "run_sha256": "d3da28301a55d88460479b3889092ad54a3ffd82d59d5ad645ad0aec5ff37176"
+    },
+    {
+     "name": "StegDB monitoring hook",
+     "run_file": "tools/tasks/steps/verify.verify-python3.11/04-stegdb-monitoring-hook.sh",
+     "run_sha256": "1b21c0f62d060c57c053f92d51fea4d5ad4703e574838bb25c2859b0c495ba9c",
+     "if": "always()"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "scenario-traces-py3.11",
+     "path": "outputs/*.json",
+     "if_no_files_found": "warn",
+     "if": "success()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "python_version": "3.11",
+    "artifact_name": "scenario-traces-py3.11",
+    "artifact_if_no_files_found": "warn"
+   }
+  },
+  {
+   "id": "verify.verify-python3.12",
+   "source": {
+    "workflow": ".github/workflows/verify.yml",
+    "workflow_name": "AaCT-E Verification",
+    "job": "verify",
+    "job_name": null,
+    "commit": "56b798e",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "schedule"
+    ],
+    "permissions_before": null,
+    "matrix_cell": {
+     "python-version": "3.12"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Verify zero-dependency claim",
+     "run_file": "tools/tasks/steps/verify.verify-python3.12/01-verify-zero-dependency-claim.sh",
+     "run_sha256": "6a8f393ba987c03da5b6ca34ca09291f558c33ed388b64b6fcccbc2a33a47c73"
+    },
+    {
+     "name": "Run demo scenarios",
+     "run_file": "tools/tasks/steps/verify.verify-python3.12/02-run-demo-scenarios.sh",
+     "run_sha256": "950274717767167f31cc880a74455bba0b74fa4f91b162caa5d6fb3738f369b9"
+    },
+    {
+     "name": "Run verification suite",
+     "run_file": "tools/tasks/steps/verify.verify-python3.12/03-run-verification-suite.sh",
+     "run_sha256": "d3da28301a55d88460479b3889092ad54a3ffd82d59d5ad645ad0aec5ff37176"
+    },
+    {
+     "name": "StegDB monitoring hook",
+     "run_file": "tools/tasks/steps/verify.verify-python3.12/04-stegdb-monitoring-hook.sh",
+     "run_sha256": "1b21c0f62d060c57c053f92d51fea4d5ad4703e574838bb25c2859b0c495ba9c",
+     "if": "always()"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "scenario-traces-py3.12",
+     "path": "outputs/*.json",
+     "if_no_files_found": "warn",
+     "if": "success()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "python_version": "3.12",
+    "artifact_name": "scenario-traces-py3.12",
+    "artifact_if_no_files_found": "warn"
+   }
+  },
+  {
+   "id": "verify.verify-python3.13",
+   "source": {
+    "workflow": ".github/workflows/verify.yml",
+    "workflow_name": "AaCT-E Verification",
+    "job": "verify",
+    "job_name": null,
+    "commit": "56b798e",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "schedule"
+    ],
+    "permissions_before": null,
+    "matrix_cell": {
+     "python-version": "3.13"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Verify zero-dependency claim",
+     "run_file": "tools/tasks/steps/verify.verify-python3.13/01-verify-zero-dependency-claim.sh",
+     "run_sha256": "6a8f393ba987c03da5b6ca34ca09291f558c33ed388b64b6fcccbc2a33a47c73"
+    },
+    {
+     "name": "Run demo scenarios",
+     "run_file": "tools/tasks/steps/verify.verify-python3.13/02-run-demo-scenarios.sh",
+     "run_sha256": "950274717767167f31cc880a74455bba0b74fa4f91b162caa5d6fb3738f369b9"
+    },
+    {
+     "name": "Run verification suite",
+     "run_file": "tools/tasks/steps/verify.verify-python3.13/03-run-verification-suite.sh",
+     "run_sha256": "d3da28301a55d88460479b3889092ad54a3ffd82d59d5ad645ad0aec5ff37176"
+    },
+    {
+     "name": "StegDB monitoring hook",
+     "run_file": "tools/tasks/steps/verify.verify-python3.13/04-stegdb-monitoring-hook.sh",
+     "run_sha256": "1b21c0f62d060c57c053f92d51fea4d5ad4703e574838bb25c2859b0c495ba9c",
+     "if": "always()"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "scenario-traces-py3.13",
+     "path": "outputs/*.json",
+     "if_no_files_found": "warn",
+     "if": "success()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "python_version": "3.13",
+    "artifact_name": "scenario-traces-py3.13",
     "artifact_if_no_files_found": "warn"
    }
   },

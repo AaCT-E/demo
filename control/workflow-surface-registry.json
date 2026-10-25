@@ -72,7 +72,10 @@
    "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
    "status": "DONE",
    "catalog_groups": [
-    "verify.verify"
+    "verify.verify-python3.10",
+    "verify.verify-python3.11",
+    "verify.verify-python3.12",
+    "verify.verify-python3.13"
    ],
    "verbatim_record": "tools/tasks/folded/verify.yml",
    "verbatim_sha256": "2fd73ea686a8ff321717ee8bf12bec322f924c0f70bc27b81340fb76869125c2"

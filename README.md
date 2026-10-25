@@ -66,7 +66,7 @@ python verify_demo.py
 | `DEMO_SPEC.md` | Exact specification (frozen) |
 | `aacte.architecture.json` | Ecosystem architecture manifest |
 | `stegdb_hooks/` | StegDB monitoring integration |
-| `.github/workflows/validation-dispatcher.yml` | CI verification (G17 catalog groups `verify.verify` and `architecture-guard.validate-structure`; verbatim originals in `tools/tasks/folded/`) |
+| `.github/workflows/validation-dispatcher.yml` | CI verification (G17 catalog groups `verify.verify-python3.10`…`3.13` and `architecture-guard.validate-structure`; verbatim originals in `tools/tasks/folded/`) |
 | `.github/workflows/release.yml` | Tag-triggered release packaging |
 | `docs/ACCESS.md` | How to access the demo |
 | `docs/SDK_INTEGRATION.md` | SDK wrapping contract |
