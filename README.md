@@ -1,6 +1,6 @@
 # AaCT-E — Admissibility at Commit-Time Engine
 
-[![CI](https://github.com/AaCT-E/demo/actions/workflows/verify.yml/badge.svg)](https://github.com/AaCT-E/demo/actions/workflows/verify.yml)
+[![CI](https://github.com/AaCT-E/demo/actions/workflows/validation-dispatcher.yml/badge.svg)](https://github.com/AaCT-E/demo/actions/workflows/validation-dispatcher.yml)
 [![Version](https://img.shields.io/badge/version-0.2.0-blue)](https://github.com/AaCT-E/demo/releases)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
@@ -66,7 +66,7 @@ python verify_demo.py
 | `DEMO_SPEC.md` | Exact specification (frozen) |
 | `aacte.architecture.json` | Ecosystem architecture manifest |
 | `stegdb_hooks/` | StegDB monitoring integration |
-| `.github/workflows/verify.yml` | CI verification |
+| `.github/workflows/validation-dispatcher.yml` | CI verification (G17 catalog groups `verify.verify-python3.10`…`3.13` and `architecture-guard.validate-structure`; verbatim originals in `tools/tasks/folded/`) |
 | `.github/workflows/release.yml` | Tag-triggered release packaging |
 | `docs/ACCESS.md` | How to access the demo |
 | `docs/SDK_INTEGRATION.md` | SDK wrapping contract |

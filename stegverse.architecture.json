@@ -18,7 +18,7 @@
     "access_cli": "python -m access.cli",
     "access_web": "python -m access.web --port 8080",
     "install": "pip install -e .",
-    "ci": ".github/workflows/verify.yml",
+    "ci": ".github/workflows/validation-dispatcher.yml",
     "release": ".github/workflows/release.yml"
   },
   "dependencies": {

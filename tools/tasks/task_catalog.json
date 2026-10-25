@@ -1,0 +1,347 @@
+{
+ "schema": "stegverse.task-catalog/v1",
+ "repository": "AaCT-E/demo",
+ "goal_id": "G17-WORKFLOW-SURFACE-MINIMIZATION",
+ "authority": "Rigel 2026-10-24 retroactive G17 enforcement (StegVerse-org/.github#166); pattern StegVerse-Labs/StegDB#60 (eab2e773)",
+ "dispatcher": ".github/workflows/validation-dispatcher.yml",
+ "runner": "tools/tasks/run_catalog.py",
+ "runner_source": "StegVerse-Labs/StegDB tools/tasks/run_catalog.py @ eab2e773271f3e63466a710f1b4555f677882848 (sha256 f741f30557888fd8e4852a52adfc65736a08898d49ade7519f6bcc2672921e9b), copied unmodified",
+ "rule": "Every check a folded workflow job ran is one group here; its step bodies are the original run blocks byte for byte, pinned by sha256, except the repairs listed. A new check is a new group (or a step in one), never a new workflow file.",
+ "path_filters": "Dropped: every group runs on every pull_request and push to main (a superset of the original path-filtered runs). workflow_dispatch/schedule triggers are not carried (no manual dispatch, no cron).",
+ "repairs": [
+  "None of the folded run blocks is changed. workflow_dispatch and schedule are not carried (no manual dispatch, no cron). Push/path filters are dropped, so each group runs on every pull_request and push to main (a superset)."
+ ],
+ "folded_from_commit": "56b798e10023db5d315a9ecbba0c2179b1591f3d",
+ "groups": [
+  {
+   "id": "architecture-guard.validate-structure",
+   "source": {
+    "workflow": ".github/workflows/architecture-guard.yml",
+    "workflow_name": "Architecture Guard",
+    "job": "validate-structure",
+    "job_name": null,
+    "commit": "56b798e",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "schedule",
+     "workflow_dispatch"
+    ],
+    "permissions_before": null
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Install dependencies",
+     "run_file": "tools/tasks/steps/architecture-guard.validate-structure/01-install-dependencies.sh",
+     "run_sha256": "9bfe045a35cd4049a98ae2606bac240f3f5581f22631fa4d499fcd408a2021db"
+    },
+    {
+     "name": "Download canonical validator from StegDB",
+     "run_file": "tools/tasks/steps/architecture-guard.validate-structure/02-download-canonical-validator-from-stegdb.sh",
+     "run_sha256": "ca571f5e11dd21808ec1ace3c73c0459f76713acffa679c66acd016f11b83b2f"
+    },
+    {
+     "name": "Validate repository structure against manifest",
+     "run_file": "tools/tasks/steps/architecture-guard.validate-structure/03-validate-repository-structure-against-manifest.sh",
+     "run_sha256": "1994e706a17b89726978181512e7b1fc3291ad286eb32eea260e99b1efeed1e9"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "architecture-report",
+     "path": "stegverse.architecture.json\n*.log\n",
+     "if_no_files_found": "warn",
+     "if": "always()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "python_version": "3.11",
+    "artifact_name": "architecture-report",
+    "artifact_if_no_files_found": "warn"
+   }
+  },
+  {
+   "id": "verify.verify-python3.10",
+   "source": {
+    "workflow": ".github/workflows/verify.yml",
+    "workflow_name": "AaCT-E Verification",
+    "job": "verify",
+    "job_name": null,
+    "commit": "56b798e",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "schedule"
+    ],
+    "permissions_before": null,
+    "matrix_cell": {
+     "python-version": "3.10"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Verify zero-dependency claim",
+     "run_file": "tools/tasks/steps/verify.verify-python3.10/01-verify-zero-dependency-claim.sh",
+     "run_sha256": "6a8f393ba987c03da5b6ca34ca09291f558c33ed388b64b6fcccbc2a33a47c73"
+    },
+    {
+     "name": "Run demo scenarios",
+     "run_file": "tools/tasks/steps/verify.verify-python3.10/02-run-demo-scenarios.sh",
+     "run_sha256": "950274717767167f31cc880a74455bba0b74fa4f91b162caa5d6fb3738f369b9"
+    },
+    {
+     "name": "Run verification suite",
+     "run_file": "tools/tasks/steps/verify.verify-python3.10/03-run-verification-suite.sh",
+     "run_sha256": "d3da28301a55d88460479b3889092ad54a3ffd82d59d5ad645ad0aec5ff37176"
+    },
+    {
+     "name": "StegDB monitoring hook",
+     "run_file": "tools/tasks/steps/verify.verify-python3.10/04-stegdb-monitoring-hook.sh",
+     "run_sha256": "1b21c0f62d060c57c053f92d51fea4d5ad4703e574838bb25c2859b0c495ba9c",
+     "if": "always()"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "scenario-traces-py3.10",
+     "path": "outputs/*.json",
+     "if_no_files_found": "warn",
+     "if": "success()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "python_version": "3.10",
+    "artifact_name": "scenario-traces-py3.10",
+    "artifact_if_no_files_found": "warn"
+   }
+  },
+  {
+   "id": "verify.verify-python3.11",
+   "source": {
+    "workflow": ".github/workflows/verify.yml",
+    "workflow_name": "AaCT-E Verification",
+    "job": "verify",
+    "job_name": null,
+    "commit": "56b798e",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "schedule"
+    ],
+    "permissions_before": null,
+    "matrix_cell": {
+     "python-version": "3.11"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Verify zero-dependency claim",
+     "run_file": "tools/tasks/steps/verify.verify-python3.11/01-verify-zero-dependency-claim.sh",
+     "run_sha256": "6a8f393ba987c03da5b6ca34ca09291f558c33ed388b64b6fcccbc2a33a47c73"
+    },
+    {
+     "name": "Run demo scenarios",
+     "run_file": "tools/tasks/steps/verify.verify-python3.11/02-run-demo-scenarios.sh",
+     "run_sha256": "950274717767167f31cc880a74455bba0b74fa4f91b162caa5d6fb3738f369b9"
+    },
+    {
+     "name": "Run verification suite",
+     "run_file": "tools/tasks/steps/verify.verify-python3.11/03-run-verification-suite.sh",
+     "run_sha256": "d3da28301a55d88460479b3889092ad54a3ffd82d59d5ad645ad0aec5ff37176"
+    },
+    {
+     "name": "StegDB monitoring hook",
+     "run_file": "tools/tasks/steps/verify.verify-python3.11/04-stegdb-monitoring-hook.sh",
+     "run_sha256": "1b21c0f62d060c57c053f92d51fea4d5ad4703e574838bb25c2859b0c495ba9c",
+     "if": "always()"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "scenario-traces-py3.11",
+     "path": "outputs/*.json",
+     "if_no_files_found": "warn",
+     "if": "success()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "python_version": "3.11",
+    "artifact_name": "scenario-traces-py3.11",
+    "artifact_if_no_files_found": "warn"
+   }
+  },
+  {
+   "id": "verify.verify-python3.12",
+   "source": {
+    "workflow": ".github/workflows/verify.yml",
+    "workflow_name": "AaCT-E Verification",
+    "job": "verify",
+    "job_name": null,
+    "commit": "56b798e",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "schedule"
+    ],
+    "permissions_before": null,
+    "matrix_cell": {
+     "python-version": "3.12"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Verify zero-dependency claim",
+     "run_file": "tools/tasks/steps/verify.verify-python3.12/01-verify-zero-dependency-claim.sh",
+     "run_sha256": "6a8f393ba987c03da5b6ca34ca09291f558c33ed388b64b6fcccbc2a33a47c73"
+    },
+    {
+     "name": "Run demo scenarios",
+     "run_file": "tools/tasks/steps/verify.verify-python3.12/02-run-demo-scenarios.sh",
+     "run_sha256": "950274717767167f31cc880a74455bba0b74fa4f91b162caa5d6fb3738f369b9"
+    },
+    {
+     "name": "Run verification suite",
+     "run_file": "tools/tasks/steps/verify.verify-python3.12/03-run-verification-suite.sh",
+     "run_sha256": "d3da28301a55d88460479b3889092ad54a3ffd82d59d5ad645ad0aec5ff37176"
+    },
+    {
+     "name": "StegDB monitoring hook",
+     "run_file": "tools/tasks/steps/verify.verify-python3.12/04-stegdb-monitoring-hook.sh",
+     "run_sha256": "1b21c0f62d060c57c053f92d51fea4d5ad4703e574838bb25c2859b0c495ba9c",
+     "if": "always()"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "scenario-traces-py3.12",
+     "path": "outputs/*.json",
+     "if_no_files_found": "warn",
+     "if": "success()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "python_version": "3.12",
+    "artifact_name": "scenario-traces-py3.12",
+    "artifact_if_no_files_found": "warn"
+   }
+  },
+  {
+   "id": "verify.verify-python3.13",
+   "source": {
+    "workflow": ".github/workflows/verify.yml",
+    "workflow_name": "AaCT-E Verification",
+    "job": "verify",
+    "job_name": null,
+    "commit": "56b798e",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "schedule"
+    ],
+    "permissions_before": null,
+    "matrix_cell": {
+     "python-version": "3.13"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Verify zero-dependency claim",
+     "run_file": "tools/tasks/steps/verify.verify-python3.13/01-verify-zero-dependency-claim.sh",
+     "run_sha256": "6a8f393ba987c03da5b6ca34ca09291f558c33ed388b64b6fcccbc2a33a47c73"
+    },
+    {
+     "name": "Run demo scenarios",
+     "run_file": "tools/tasks/steps/verify.verify-python3.13/02-run-demo-scenarios.sh",
+     "run_sha256": "950274717767167f31cc880a74455bba0b74fa4f91b162caa5d6fb3738f369b9"
+    },
+    {
+     "name": "Run verification suite",
+     "run_file": "tools/tasks/steps/verify.verify-python3.13/03-run-verification-suite.sh",
+     "run_sha256": "d3da28301a55d88460479b3889092ad54a3ffd82d59d5ad645ad0aec5ff37176"
+    },
+    {
+     "name": "StegDB monitoring hook",
+     "run_file": "tools/tasks/steps/verify.verify-python3.13/04-stegdb-monitoring-hook.sh",
+     "run_sha256": "1b21c0f62d060c57c053f92d51fea4d5ad4703e574838bb25c2859b0c495ba9c",
+     "if": "always()"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "scenario-traces-py3.13",
+     "path": "outputs/*.json",
+     "if_no_files_found": "warn",
+     "if": "success()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "python_version": "3.13",
+    "artifact_name": "scenario-traces-py3.13",
+    "artifact_if_no_files_found": "warn"
+   }
+  },
+  {
+   "id": "workflow-surface-registry.validate",
+   "catalog_addition": "G17 registry gate (no folded source workflow)",
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Workflow files equal the registered surfaces; catalog verifies ALLOW",
+     "run_file": "tools/tasks/steps/workflow-surface-registry.validate/01-registry.sh",
+     "run_sha256": "811824e88664923006be2eeb35632d710f5504145967f61632ad9e8fbdcb35ca"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "false",
+    "timeout_minutes": 10,
+    "python_version": "3.11"
+   }
+  }
+ ]
+}
